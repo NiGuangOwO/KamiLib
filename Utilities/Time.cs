@@ -60,8 +60,8 @@ public static class Time
             // Australia
             4 => NextDayOfWeek(DayOfWeek.Saturday, 9),
 
-            // Unknown Region
-            _ => DateTime.MinValue
+            // China
+            _ => NextDayOfWeek(DayOfWeek.Saturday, 13),
         };
     }
 

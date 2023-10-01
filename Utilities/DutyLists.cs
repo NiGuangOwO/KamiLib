@@ -32,9 +32,9 @@ public class DutyLists
     private DutyLists()
     {
         // ContentType.Row 5 == Raids
-        Savage = LuminaCache<ContentFinderCondition>.Instance.OfLanguage(ClientLanguage.English)
+        Savage = LuminaCache<ContentFinderCondition>.Instance.OfLanguage(ClientLanguage.ChineseSimplified)
             .Where(t => t.ContentType.Row is 5)
-            .Where(t => t.Name.RawString.Contains("Savage"))
+            .Where(t => t.Name.RawString.Contains("零式"))
             .Select(r => r.TerritoryType.Row)
             .ToList();
         
@@ -43,11 +43,11 @@ public class DutyLists
             .Where(t => t.ContentType.Row is 28)
             .Select(t => t.TerritoryType.Row)
             .ToList();
-        
+
         // ContentType.Row 4 == Trials
         ExtremeUnreal = LuminaCache<ContentFinderCondition>.Instance.OfLanguage(ClientLanguage.English)
             .Where(t => t.ContentType.Row is 4)
-            .Where(t => new[] {"Extreme", "Unreal", "The Minstrel"}.Any(s => t.Name.RawString.Contains(s)))
+            .Where(t => new[] { "歼殛战", "幻巧战", "假想作战", "幻想歼灭战", "传奇征龙战", "梦幻歼灭战", "幽夜歼灭战", "上位狩猎战", "诗魂战", "孤念歼灭战", "狂想作战", "追忆战", "幻耀歼灭战", "终极之战", "晖光歼灭战", "暝暗歼灭战" }.Any(s => t.Name.RawString.Contains(s)))
             .Select(t => t.TerritoryType.Row)
             .ToList();
 
@@ -71,10 +71,10 @@ public class DutyLists
             .Select(cfc => cfc.TerritoryType.Row)
             .ToList();
         
-        LimitedSavage = LuminaCache<ContentFinderCondition>.Instance.OfLanguage(ClientLanguage.English)
+        LimitedSavage = LuminaCache<ContentFinderCondition>.Instance.OfLanguage(ClientLanguage.ChineseSimplified)
             .Where(cfc => instanceContents.Contains(cfc.Content))
             .Where(cfc => cfc.TerritoryType.Value?.TerritoryIntendedUse is 17)
-            .Where(cfc => !cfc.Name.RawString.Contains("Ultimate"))
+            .Where(cfc => !cfc.Name.RawString.Contains("绝境战") && !cfc.Name.RawString.Contains("绝境验证战"))
             .OrderByDescending(cfc => cfc.SortKey)
             .Select(cfc => cfc.TerritoryType.Row)
             .ToList();
